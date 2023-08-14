@@ -19,6 +19,45 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+    lazy var emailContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.tintColor = .white
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let iv  = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.image = UIImage(named: "mail")
+        view.addSubview(iv)
+        iv.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, paddingLeft: 8, paddingBottom: 8)
+        iv.setDimensions(width: 24, height: 24)
+        
+        return view
+    }()
+    
+    lazy var passwordContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .blue
+        view.tintColor = .white
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        let iv  = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.image = UIImage(named: "ic_lock_outline_white_2x")
+        view.addSubview(iv)
+        iv.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, paddingLeft: 8, paddingBottom: 8)
+        iv.setDimensions(width: 24, height: 24)
+        
+        return view
+    }()
+    
+    lazy var stackContainLoginView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+        stack.axis = .vertical
+        stack.spacing = 8.0
+        return stack
+    }()
+    
     //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +77,8 @@ class LoginViewController: UIViewController {
         logoImageView.centerX(inView: view, topAnchor: view.safeAreaLayoutGuide.topAnchor)
         logoImageView.setDimensions(width: 150, height: 150)
         
+
+        view.addSubview(stackContainLoginView)
+        stackContainLoginView.anchor(top: logoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
     }
 }
