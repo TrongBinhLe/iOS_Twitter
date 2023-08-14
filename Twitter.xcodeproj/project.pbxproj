@@ -13,6 +13,10 @@
 		8414106A2A89DB3600ED651A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841410692A89DB3600ED651A /* Assets.xcassets */; };
 		8414106D2A89DB3600ED651A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8414106B2A89DB3600ED651A /* LaunchScreen.storyboard */; };
 		8414107D2A89DEF200ED651A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414107C2A89DEF200ED651A /* MainTabController.swift */; };
+		8414107F2A89F8E000ED651A /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414107E2A89F8E000ED651A /* FeedController.swift */; };
+		841410812A89F99000ED651A /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410802A89F99000ED651A /* ExploreController.swift */; };
+		841410832A89F9A300ED651A /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410822A89F9A300ED651A /* NotificationsController.swift */; };
+		841410852A89FA6700ED651A /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410842A89FA6700ED651A /* ConversationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8414106C2A89DB3600ED651A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8414106E2A89DB3600ED651A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8414107C2A89DEF200ED651A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		8414107E2A89F8E000ED651A /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedController.swift; path = ../../../../../../../Desktop/FeedController.swift; sourceTree = "<group>"; };
+		841410802A89F99000ED651A /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		841410822A89F9A300ED651A /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		841410842A89FA6700ED651A /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				8414107C2A89DEF200ED651A /* MainTabController.swift */,
+				8414107E2A89F8E000ED651A /* FeedController.swift */,
+				841410802A89F99000ED651A /* ExploreController.swift */,
+				841410822A89F9A300ED651A /* NotificationsController.swift */,
+				841410842A89FA6700ED651A /* ConversationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -186,9 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841410832A89F9A300ED651A /* NotificationsController.swift in Sources */,
 				841410612A89DB3400ED651A /* AppDelegate.swift in Sources */,
+				841410812A89F99000ED651A /* ExploreController.swift in Sources */,
 				841410632A89DB3400ED651A /* SceneDelegate.swift in Sources */,
 				8414107D2A89DEF200ED651A /* MainTabController.swift in Sources */,
+				841410852A89FA6700ED651A /* ConversationController.swift in Sources */,
+				8414107F2A89F8E000ED651A /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
