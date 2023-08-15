@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
@@ -84,7 +84,8 @@ class LoginViewController: UIViewController {
     }
     
     @objc func handleSignUpButton() {
-        
+        let registerViewController = RegistrationController()
+        navigationController?.pushViewController(registerViewController, animated: true)
     }
     //MARK: - Helpers
     
