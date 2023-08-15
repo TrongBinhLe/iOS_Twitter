@@ -33,22 +33,42 @@ class LoginViewController: UIViewController {
         return view
     }()
     
-    lazy var emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Email")
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Password")
         textField.isSecureTextEntry = true
         return textField
     }()
     
-    lazy var stackContainLoginView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView])
+    private lazy var buttonLogin: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(.twitterBlue, for: .normal)
+        button.backgroundColor = .white
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.layer.cornerRadius = 5
+        button.layer.masksToBounds = true
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var stackContainLoginView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, buttonLogin])
         stack.axis = .vertical
-        stack.spacing = 8.0
+        stack.spacing = 20
+        stack.distribution = .fillEqually
         return stack
+    }()
+    
+    private lazy var dontHaveAccountButton: UIButton = {
+        let button = Uitilities.attributedButton("Don't have account? ", "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
+        return button
     }()
     
     //MARK: - Life Cycles
@@ -59,6 +79,13 @@ class LoginViewController: UIViewController {
     
     //MARK: - Selectors
     
+    @objc func handleLogin() {
+        
+    }
+    
+    @objc func handleSignUpButton() {
+        
+    }
     //MARK: - Helpers
     
     private func configureUI() {
@@ -73,6 +100,11 @@ class LoginViewController: UIViewController {
         
 
         view.addSubview(stackContainLoginView)
-        stackContainLoginView.anchor(top: logoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor)
+        stackContainLoginView.anchor(top: logoImageView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingLeft: 32, paddingRight: 32)
+        
+        view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.centerX(inView: view)
+        dontHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 10)
     }
+    
 }
