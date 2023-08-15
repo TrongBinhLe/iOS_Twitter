@@ -19,6 +19,7 @@
 		841410872A8A1AC400ED651A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410862A8A1AC400ED651A /* Extensions.swift */; };
 		8414108A2A8A23A800ED651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410892A8A23A800ED651A /* LoginViewController.swift */; };
 		8414108F2A8A24FD00ED651A /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414108E2A8A24FD00ED651A /* RegistrationController.swift */; };
+		841410912A8A44B200ED651A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410902A8A44B200ED651A /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		841410862A8A1AC400ED651A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		841410892A8A23A800ED651A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8414108E2A8A24FD00ED651A /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		841410902A8A44B200ED651A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				841410862A8A1AC400ED651A /* Extensions.swift */,
+				841410902A8A44B200ED651A /* Utilities.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			files = (
 				8414108A2A8A23A800ED651A /* LoginViewController.swift in Sources */,
 				841410832A89F9A300ED651A /* NotificationsController.swift in Sources */,
+				841410912A8A44B200ED651A /* Utilities.swift in Sources */,
 				841410612A89DB3400ED651A /* AppDelegate.swift in Sources */,
 				841410812A89F99000ED651A /* ExploreController.swift in Sources */,
 				841410872A8A1AC400ED651A /* Extensions.swift in Sources */,
