@@ -13,6 +13,7 @@ class RegistrationController: UIViewController {
     
     //MARK: - Properties
     private let imagePicker = UIImagePickerController()
+    private var profileImage: UIImage?
     
     private lazy var plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -68,7 +69,6 @@ class RegistrationController: UIViewController {
     
     private lazy var userNameTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Username")
-        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -111,8 +111,12 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handleRegistration() {
+        guard let profileImage = profileImage else { return }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        guard let fullName = fullNameTextField.text else { return }
+        guard let userName = userNameTextField.text else { return }
+        
         print("DEBUG: Email: \(email) and password: \(password)")
         Auth.auth().createUser(withEmail: email, password: password) {[weak self] authResult, error in
             guard let _ = self else { return }
@@ -120,7 +124,19 @@ class RegistrationController: UIViewController {
                 print("DEBUG: error \(error.localizedDescription)")
                 return
             }
-            print("DEBUG: Registeration success")
+            
+            guard let userID = authResult?.user.uid else { return }
+            
+            let values = ["email": email, "password": password, "fullName": fullName, "userName": userName]
+            let ref = Database.database().reference().child("users").child(userID)
+            
+            ref.updateChildValues(values) { (erorr, ref) in
+                if let error = error {
+                    print("DEBUG: error \(error.localizedDescription)")
+                }
+                print("DEBUG: Successfully updated user infomation...")
+            }
+            
         }
         
     }
@@ -158,6 +174,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let profileImage = info[.editedImage] as? UIImage else { return }
+        self.profileImage = profileImage
         
         plusPhotoButton.layer.cornerRadius = 120/2
         plusPhotoButton.layer.masksToBounds = true
