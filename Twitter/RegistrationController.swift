@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
@@ -73,7 +74,7 @@ class RegistrationController: UIViewController {
     
     private lazy var alreadyHaveAccountButton: UIButton = {
         let button = Uitilities.attributedButton("Already have an account! ", "Log In")
-        button.addTarget(self, action: #selector(handleSignUpButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSignInButton), for: .touchUpInside)
         return button
     }()
     
@@ -110,10 +111,21 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handleRegistration() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        print("DEBUG: Email: \(email) and password: \(password)")
+        Auth.auth().createUser(withEmail: email, password: password) {[weak self] authResult, error in
+            guard let _ = self else { return }
+            if let error = error {
+                print("DEBUG: error \(error.localizedDescription)")
+                return
+            }
+            print("DEBUG: Registeration success")
+        }
         
     }
     
-    @objc func handleSignUpButton() {
+    @objc func handleSignInButton() {
         navigationController?.popViewController(animated: true)
     }
     
