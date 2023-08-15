@@ -44,6 +44,7 @@ class MainTabController: UITabBarController {
         
         actionButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingBottom: 64, paddingRight: 15, width: 56, height: 56)
         actionButton.layer.cornerRadius = 56/2
+        actionButton.layer.masksToBounds = true
     }
     
     func configureViewControllers() {
