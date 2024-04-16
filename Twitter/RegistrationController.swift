@@ -111,7 +111,10 @@ class RegistrationController: UIViewController {
     }
     
     @objc func handleRegistration() {
-        guard let profileImage = profileImage else { return }
+        guard let profileImage = profileImage else {
+            print("DEBUG: Please select a profile image..")
+            return
+        }
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         guard let fullName = fullNameTextField.text else { return }

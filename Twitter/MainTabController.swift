@@ -48,7 +48,7 @@ class MainTabController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let feed = FeedController()
+        let feed = FeedViewController()
         let navFeed = templateNavigationController(image: UIImage(named: "home_unselected")!, viewController: feed)
         
         let explore = ExploreController()

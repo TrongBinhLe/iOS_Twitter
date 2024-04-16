@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		55045342ACEA7C672796F207 /* Pods_Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32924AE4B1E6B17CEAC7AEF4 /* Pods_Twitter.framework */; };
+		840DA7852BCE28AA008A00E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 840DA7842BCE28AA008A00E5 /* GoogleService-Info.plist */; };
 		841410612A89DB3400ED651A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410602A89DB3400ED651A /* AppDelegate.swift */; };
 		841410632A89DB3400ED651A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410622A89DB3400ED651A /* SceneDelegate.swift */; };
 		8414106A2A89DB3600ED651A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841410692A89DB3600ED651A /* Assets.xcassets */; };
 		8414106D2A89DB3600ED651A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8414106B2A89DB3600ED651A /* LaunchScreen.storyboard */; };
 		8414107D2A89DEF200ED651A /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414107C2A89DEF200ED651A /* MainTabController.swift */; };
-		8414107F2A89F8E000ED651A /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414107E2A89F8E000ED651A /* FeedController.swift */; };
 		841410812A89F99000ED651A /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410802A89F99000ED651A /* ExploreController.swift */; };
 		841410832A89F9A300ED651A /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410822A89F9A300ED651A /* NotificationsController.swift */; };
 		841410852A89FA6700ED651A /* ConversationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410842A89FA6700ED651A /* ConversationController.swift */; };
@@ -21,12 +21,13 @@
 		8414108A2A8A23A800ED651A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410892A8A23A800ED651A /* LoginViewController.swift */; };
 		8414108F2A8A24FD00ED651A /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8414108E2A8A24FD00ED651A /* RegistrationController.swift */; };
 		841410912A8A44B200ED651A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841410902A8A44B200ED651A /* Utilities.swift */; };
-		842E33B12A8B5BD00054A15C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842E33B02A8B5BD00054A15C /* GoogleService-Info.plist */; };
+		8416914C2BCCBF8C0062150A /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8416914B2BCCBF8C0062150A /* FeedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		305ABF77E1FA7C89CF470A19 /* Pods-Twitter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.release.xcconfig"; path = "Target Support Files/Pods-Twitter/Pods-Twitter.release.xcconfig"; sourceTree = "<group>"; };
 		32924AE4B1E6B17CEAC7AEF4 /* Pods_Twitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Twitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		840DA7842BCE28AA008A00E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8414105D2A89DB3300ED651A /* Twitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Twitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		841410602A89DB3400ED651A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		841410622A89DB3400ED651A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		8414106C2A89DB3600ED651A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8414106E2A89DB3600ED651A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8414107C2A89DEF200ED651A /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
-		8414107E2A89F8E000ED651A /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedController.swift; path = ../../../../../../../Desktop/FeedController.swift; sourceTree = "<group>"; };
 		841410802A89F99000ED651A /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		841410822A89F9A300ED651A /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		841410842A89FA6700ED651A /* ConversationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		841410892A8A23A800ED651A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8414108E2A8A24FD00ED651A /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		841410902A8A44B200ED651A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		842E33B02A8B5BD00054A15C /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		8416914B2BCCBF8C0062150A /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		E1CAAA55ECD98D6509A57D2A /* Pods-Twitter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twitter.debug.xcconfig"; path = "Target Support Files/Pods-Twitter/Pods-Twitter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,6 @@
 				E1CAAA55ECD98D6509A57D2A /* Pods-Twitter.debug.xcconfig */,
 				305ABF77E1FA7C89CF470A19 /* Pods-Twitter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -107,7 +106,7 @@
 				841410622A89DB3400ED651A /* SceneDelegate.swift */,
 				841410692A89DB3600ED651A /* Assets.xcassets */,
 				8414106B2A89DB3600ED651A /* LaunchScreen.storyboard */,
-				842E33B02A8B5BD00054A15C /* GoogleService-Info.plist */,
+				840DA7842BCE28AA008A00E5 /* GoogleService-Info.plist */,
 				8414106E2A89DB3600ED651A /* Info.plist */,
 			);
 			path = Twitter;
@@ -134,10 +133,10 @@
 			children = (
 				841410882A8A238D00ED651A /* Authentication */,
 				8414107C2A89DEF200ED651A /* MainTabController.swift */,
-				8414107E2A89F8E000ED651A /* FeedController.swift */,
 				841410802A89F99000ED651A /* ExploreController.swift */,
 				841410822A89F9A300ED651A /* NotificationsController.swift */,
 				841410842A89FA6700ED651A /* ConversationController.swift */,
+				8416914B2BCCBF8C0062150A /* FeedViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -233,8 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8414106D2A89DB3600ED651A /* LaunchScreen.storyboard in Resources */,
+				840DA7852BCE28AA008A00E5 /* GoogleService-Info.plist in Resources */,
 				8414106A2A89DB3600ED651A /* Assets.xcassets in Resources */,
-				842E33B12A8B5BD00054A15C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,10 +293,10 @@
 				841410812A89F99000ED651A /* ExploreController.swift in Sources */,
 				841410872A8A1AC400ED651A /* Extensions.swift in Sources */,
 				841410632A89DB3400ED651A /* SceneDelegate.swift in Sources */,
+				8416914C2BCCBF8C0062150A /* FeedViewController.swift in Sources */,
 				8414107D2A89DEF200ED651A /* MainTabController.swift in Sources */,
 				841410852A89FA6700ED651A /* ConversationController.swift in Sources */,
 				8414108F2A8A24FD00ED651A /* RegistrationController.swift in Sources */,
-				8414107F2A89F8E000ED651A /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
