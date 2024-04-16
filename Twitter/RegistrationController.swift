@@ -39,6 +39,7 @@ class RegistrationController: UIViewController {
     
     private lazy var emailTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Email")
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -59,16 +60,21 @@ class RegistrationController: UIViewController {
     private lazy var passwordTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Password")
         textField.isSecureTextEntry = true
+        textField.autocorrectionType = .no
         return textField
     }()
     
     private lazy var fullNameTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Full Name")
+        textField.autocorrectionType = .no
+        
         return textField
     }()
     
     private lazy var userNameTextField: UITextField = {
         let textField = Uitilities.textField(withPlaceHolder: "Username")
+        textField.autocorrectionType = .no
+        
         return textField
     }()
     
@@ -120,28 +126,55 @@ class RegistrationController: UIViewController {
         guard let fullName = fullNameTextField.text else { return }
         guard let userName = userNameTextField.text else { return }
         
-        print("DEBUG: Email: \(email) and password: \(password)")
-        Auth.auth().createUser(withEmail: email, password: password) {[weak self] authResult, error in
-            guard let _ = self else { return }
+        // Compress the profile image
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
+        let fileName = NSUUID().uuidString
+        
+        // Create and save the profile image in storage of firebase
+        let storageRef = STORAGE_PROFILE_IMAGES.child(fileName)
+        
+        storageRef.putData(imageData, metadata: nil) { (meta, error) in
+            print("DEBUG: Enter to the putData function ")
             if let error = error {
-                print("DEBUG: error \(error.localizedDescription)")
+                print("DEBUG: putdata image return \(String(describing: error.localizedDescription))")
                 return
             }
             
-            guard let userID = authResult?.user.uid else { return }
-            
-            let values = ["email": email, "password": password, "fullName": fullName, "userName": userName]
-            let ref = Database.database().reference().child("users").child(userID)
-            
-            ref.updateChildValues(values) { (erorr, ref) in
+            storageRef.downloadURL { (url, error) in
                 if let error = error {
-                    print("DEBUG: error \(error.localizedDescription)")
+                    print("DEBUG: Error when dowloadURL \(String(describing: error))")
+                    return
                 }
-                print("DEBUG: Successfully updated user infomation...")
+                print("DEBUG: Entry the dowloadURL with \(String(describing: url))")
+                guard let profileImageURL = url?.absoluteString else { return }
+                
+                print("DEBUG: Email: \(email) and password: \(password)")
+                Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
+                    guard let _ = self else { return }
+                    if let error = error {
+                        print("DEBUG: error \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    guard let userID = authResult?.user.uid else { return }
+                    let values = ["email": email,
+                                  "password": password,
+                                  "fullName": fullName,
+                                  "userName": userName,
+                                  "profileImageUrl": profileImageURL]
+                    
+                    let ref = REF_USERS.child(userID)
+                    ref.updateChildValues(values) { (erorr, ref) in
+                        if let error = error {
+                            print("DEBUG: error \(error.localizedDescription)")
+                        }
+                        print("DEBUG: Successfully updated user infomation...")
+                    }
+                    
+                }
+                
             }
-            
         }
-        
     }
     
     @objc func handleSignInButton() {
