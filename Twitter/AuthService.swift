@@ -63,8 +63,8 @@ struct AuthService {
                     guard let userID = authResult?.user.uid else { return }
                     let values = ["email": email,
                                   "password": password,
-                                  "fullName": fullname,
-                                  "userName": username,
+                                  "fullname": fullname,
+                                  "username": username,
                                   "profileImageUrl": profileImageURL]
                     
                     let ref = REF_USERS.child(userID)
