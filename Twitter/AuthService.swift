@@ -20,8 +20,8 @@ struct AuthService {
     static let shared = AuthService()
     typealias AuthDataResultCallback = (AuthDataResult?, Error?) -> Void
     
-    func logUserIn(withEmail email: String, withPassword password: String, completion: AuthDataResultCallback?) {
-        Auth.auth().signIn(withEmail: email, password: email, completion: completion)
+    func logUserIn(withEmail email: String, password: String, completion: AuthDataResultCallback?) {
+        Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
     func registerUser(credentials: AuthCredential, completion: @escaping(Error?,DatabaseReference) -> Void) {

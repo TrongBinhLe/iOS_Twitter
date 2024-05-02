@@ -129,8 +129,17 @@ class RegistrationController: UIViewController {
         let credentails = AuthCredential(email: email, password: password, fullname: fullName, username: userName, profileImage: profileImage)
         
         AuthService.shared.registerUser(credentials: credentails) { [weak self] (error, ref) in
-            guard let _ = self else { return }
+            guard let self = self else { return }
             
+            
+            let scense = UIApplication.shared.connectedScenes
+            let windowScene = scense.first as? UIWindowScene
+            
+            guard let tab = windowScene?.keyWindow?.rootViewController as? MainTabController else { return }
+            tab.authenticateUserAndConfigureUI()
+            
+            self.dismiss(animated: true, completion: nil)
+
             print("DEBUG: Sign up successfull...")
             print("DEBUG: Handle update user interface here...")
         }
