@@ -126,55 +126,15 @@ class RegistrationController: UIViewController {
         guard let fullName = fullNameTextField.text else { return }
         guard let userName = userNameTextField.text else { return }
         
-        // Compress the profile image
-        guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let fileName = NSUUID().uuidString
+        let credentails = AuthCredential(email: email, password: password, fullname: fullName, username: userName, profileImage: profileImage)
         
-        // Create and save the profile image in storage of firebase
-        let storageRef = STORAGE_PROFILE_IMAGES.child(fileName)
-        
-        storageRef.putData(imageData, metadata: nil) { (meta, error) in
-            print("DEBUG: Enter to the putData function ")
-            if let error = error {
-                print("DEBUG: putdata image return \(String(describing: error.localizedDescription))")
-                return
-            }
+        AuthService.shared.registerUser(credentials: credentails) { [weak self] (error, ref) in
+            guard let _ = self else { return }
             
-            storageRef.downloadURL { (url, error) in
-                if let error = error {
-                    print("DEBUG: Error when dowloadURL \(String(describing: error))")
-                    return
-                }
-                print("DEBUG: Entry the dowloadURL with \(String(describing: url))")
-                guard let profileImageURL = url?.absoluteString else { return }
-                
-                print("DEBUG: Email: \(email) and password: \(password)")
-                Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-                    guard let _ = self else { return }
-                    if let error = error {
-                        print("DEBUG: error \(error.localizedDescription)")
-                        return
-                    }
-                    
-                    guard let userID = authResult?.user.uid else { return }
-                    let values = ["email": email,
-                                  "password": password,
-                                  "fullName": fullName,
-                                  "userName": userName,
-                                  "profileImageUrl": profileImageURL]
-                    
-                    let ref = REF_USERS.child(userID)
-                    ref.updateChildValues(values) { (erorr, ref) in
-                        if let error = error {
-                            print("DEBUG: error \(error.localizedDescription)")
-                        }
-                        print("DEBUG: Successfully updated user infomation...")
-                    }
-                    
-                }
-                
-            }
+            print("DEBUG: Sign up successfull...")
+            print("DEBUG: Handle update user interface here...")
         }
+        
     }
     
     @objc func handleSignInButton() {
@@ -206,6 +166,7 @@ class RegistrationController: UIViewController {
     }
 }
 
+    // MARK: - UIImagePickerControllerDelegate and 
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
