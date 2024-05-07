@@ -34,7 +34,7 @@ class MainTabController: UITabBarController {
     //MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .twitterBlue
+        view.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
 //        logUserOut()
         authenticateUserAndConfigureUI()
     }
@@ -73,7 +73,9 @@ class MainTabController: UITabBarController {
 
     //MARK: - Selectors
     @objc func actionButtonTapped() {
-        print("32323")
+        let nav = UINavigationController(rootViewController: UploadTweetController())
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     //MARK: - Helpers
@@ -111,7 +113,14 @@ class MainTabController: UITabBarController {
     func templateNavigationController(image: UIImage, viewController: UIViewController) -> UINavigationController {
         let nav = UINavigationController(rootViewController: viewController)
         nav.tabBarItem.image = image
-        nav.navigationBar.barTintColor = .white
+        nav.navigationBar.isTranslucent = false
+        nav.navigationBar.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+        nav.navigationBar.barTintColor = .twitterBlue
+        
+        
+        UITabBar.appearance().backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
+        tabBar.tintColor = .twitterBlue
+    
         return nav
     }
 }
