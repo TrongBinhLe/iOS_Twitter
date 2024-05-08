@@ -11,6 +11,10 @@ class TweetCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    var tweet: Tweet? {
+        didSet { configure() }
+    }
+    
     private let profileImageView: UIImageView = {
        let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
@@ -128,6 +132,15 @@ class TweetCell: UICollectionViewCell {
     
     @objc func handleShareTapped() {
         
+    }
+    
+    // MARK: - Helps
+    
+    private func configure() {
+        guard let tweet = tweet else { return }
+        print("DEBUG: tweet of person with id is \(tweet.uid)")
+        
+        cationLabel.text = tweet.caption
     }
     
     
