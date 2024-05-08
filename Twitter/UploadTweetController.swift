@@ -38,6 +38,8 @@ class UploadTweetController: UIViewController {
         
         return iv
     }()
+    
+    private let captionTextView = CaptionTextView()
     // MARK: - Lifecyle
     
     init(user: User) {
@@ -74,8 +76,13 @@ class UploadTweetController: UIViewController {
         view.backgroundColor = .white
         configureNavigationbar()
         
-        view.addSubview(profileImageView)
-        profileImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 16)
+        let stack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
+        stack.axis = .horizontal
+        stack.spacing = 12
+        stack.alignment = .center
+        
+        view.addSubview(stack)
+        stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16)
         
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
         
