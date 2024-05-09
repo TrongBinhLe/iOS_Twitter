@@ -16,7 +16,7 @@ class TweetCell: UICollectionViewCell {
     }
     
     private let profileImageView: UIImageView = {
-       let iv = UIImageView()
+        let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
@@ -141,7 +141,6 @@ class TweetCell: UICollectionViewCell {
         print("DEBUG: tweet of person with id is \(tweet.uid)")
         
         cationLabel.text = tweet.caption
+        profileImageView.sd_setImage(with: tweet.user.profileImageUrl, completed: nil)
     }
-    
-    
 }
