@@ -89,7 +89,7 @@ class TweetCell: UICollectionViewCell {
         stack.spacing = 4
         stack.distribution = .fillProportionally
         
-        infoLabel.text = "Eddie Brock @venom"
+        infoLabel.text = "Eddie Brock @"
         infoLabel.font = UIFont.systemFont(ofSize: 14)
         
         addSubview(stack)
@@ -138,9 +138,10 @@ class TweetCell: UICollectionViewCell {
     
     private func configure() {
         guard let tweet = tweet else { return }
-        print("DEBUG: tweet of person with id is \(tweet.uid)")
+        let viewmodel = TweetViewModel(tweet: tweet)
         
         cationLabel.text = tweet.caption
-        profileImageView.sd_setImage(with: tweet.user.profileImageUrl, completed: nil)
+        infoLabel.attributedText = viewmodel.userInfoText
+        profileImageView.sd_setImage(with: viewmodel.profileImageUrl, completed: nil)
     }
 }
