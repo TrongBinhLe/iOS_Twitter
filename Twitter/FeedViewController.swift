@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SDWebImage
 
-let reuseIdentifier = "TweetCell"
+private let reuseIdentifier = "TweetCell"
 
 class FeedViewController: UICollectionViewController {
     
