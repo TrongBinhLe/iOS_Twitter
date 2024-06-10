@@ -12,6 +12,7 @@ struct TweetViewModel {
     let tweet: Tweet
     let user: User
     
+    // MARK: - Properties
     var profileImageUrl: URL? {
         tweet.user.profileImageUrl
     }
@@ -37,6 +38,7 @@ struct TweetViewModel {
         return formatter.string(from: tweet.timestamp, to: now) ?? "2m"
     }
     
+    //MARK: - Lifecyle
     init(tweet: Tweet) {
         self.tweet = tweet
         self.user = tweet.user

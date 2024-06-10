@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TweetCellDelegate : AnyObject {
+    func handleProfileImageTapped(_ cell: TweetCell)
+}
+
 class TweetCell: UICollectionViewCell {
     
     // MARK: - Properties
@@ -15,13 +19,19 @@ class TweetCell: UICollectionViewCell {
         didSet { configure() }
     }
     
-    private let profileImageView: UIImageView = {
+    weak var delegate: TweetCellDelegate?
+    
+    private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
         iv.contentMode = .scaleAspectFit
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
+        iv.isUserInteractionEnabled = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfilImageTapped))
+        iv.addGestureRecognizer(tap)
         
         return iv
     }()
@@ -134,6 +144,12 @@ class TweetCell: UICollectionViewCell {
         
     }
     
+    @objc func handleProfilImageTapped() {
+        
+        delegate?.handleProfileImageTapped(self)
+        print("DEBUG: handble profile Image tapped")
+        
+    }
     // MARK: - Helps
     
     private func configure() {
