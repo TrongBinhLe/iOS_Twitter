@@ -15,7 +15,7 @@ class ProfileFilterCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .lightGray
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "text label"
+        label.text = "Text cell"
         
         return label
     }()

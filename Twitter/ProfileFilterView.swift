@@ -10,10 +10,17 @@ import UIKit
 
 private let userIdentifier = "ProfileFilterCell"
 
+protocol ProfileFilterViewDelegate: AnyObject {
+    func filterView(_ view: ProfileFilterView, didSelect indexPath: IndexPath)
+}
+
 class ProfileFilterView: UIView {
     
     // MARK: - Properties
-    private lazy var collectionView: UICollectionView = {
+    
+    weak var delegate: ProfileFilterViewDelegate?
+    
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .white
@@ -59,7 +66,9 @@ extension ProfileFilterView: UICollectionViewDataSource {
 
     // MARK: - CollectionViewDelegate
 extension ProfileFilterView: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.filterView(self, didSelect: indexPath)
+    }
 }
 
     // MARK: - CollectionViewDelegateFlowLayout
