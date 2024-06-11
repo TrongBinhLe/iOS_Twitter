@@ -75,10 +75,16 @@ class ProfileHeader: UICollectionReusableView {
     private let bioLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "This is user bio that will span more than one line for test purpose"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.adjustsFontSizeToFitWidth = true
+        
+        label.text = "This is user bio that will span more than one line for test purpose but it not normal"
         
         return label
     }()
+    
+    private let filterBar = ProfileFilterView()
     // MARK: - Lifecycles
     
     override init(frame: CGRect) {
@@ -103,7 +109,10 @@ class ProfileHeader: UICollectionReusableView {
         userDetailStack.spacing = 4
         
         addSubview(userDetailStack)
-        userDetailStack.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+        userDetailStack.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8)
+        
+        addSubview(filterBar)
+        filterBar.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 50)
     }
     
     
