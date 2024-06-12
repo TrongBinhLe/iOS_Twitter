@@ -70,14 +70,12 @@ class ProfileHeader: UICollectionReusableView {
     private let fullnameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
-        label.text = "TrongBinhLe"
         return label
     }()
     
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16)
-        label.text = "@zoroBK"
         label.textColor = .lightGray
         
         return label
@@ -183,6 +181,9 @@ class ProfileHeader: UICollectionReusableView {
         editProfileFollowButton.setTitle(viewModel.actionButtonTile, for: .normal)
         followersLabel.attributedText = viewModel.followersString
         followingLabel.attributedText = viewModel.followingString
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = viewModel.userNameText
         
     }
     

@@ -43,6 +43,10 @@ struct ProfileHeaderViewModel {
         }
     }
     
+    var userNameText: String {
+        return "@\(self.user.username)"
+    }
+    
     init(user: User) {
         self.user = user
     }
