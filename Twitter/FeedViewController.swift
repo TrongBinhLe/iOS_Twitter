@@ -89,7 +89,7 @@ extension FeedViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let controler = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        let controler = ProfileController(user: tweets[indexPath.row].user)
             navigationController?.pushViewController(controler, animated: true)
     }
 }
@@ -106,7 +106,8 @@ extension FeedViewController: UICollectionViewDelegateFlowLayout {
 
 extension FeedViewController: TweetCellDelegate {
     func handleProfileImageTapped(_ cell: TweetCell) {
-        let controler = ProfileController(collectionViewLayout: UICollectionViewFlowLayout())
+        guard let user = cell.tweet?.user else { return }
+        let controler = ProfileController(user: user)
         navigationController?.pushViewController(controler, animated: true)
     }
     
