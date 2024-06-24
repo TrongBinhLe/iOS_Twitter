@@ -9,6 +9,13 @@ import UIKit
 
 class UserCell: UITableViewCell {
     //MARK: - Properties
+    
+    var user: User? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -26,7 +33,6 @@ class UserCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "Username"
         
         return label
     }()
@@ -35,7 +41,6 @@ class UserCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
-        label.text = "Fullname"
         return label
     }()
 
@@ -59,5 +64,14 @@ class UserCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configure() {
+        guard let user = user else { return }
+        usernameLabel.text = user.username
+        fullnameLabel.text = user.fullname
+        
+        profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
+        
     }
 }
