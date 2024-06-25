@@ -35,7 +35,7 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.rgb(red: 230, green: 230, blue: 230)
-        logUserOut()
+//        logUserOut()
         authenticateUserAndConfigureUI()
     }
     
