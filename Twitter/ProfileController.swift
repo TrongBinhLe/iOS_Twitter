@@ -36,7 +36,10 @@ class ProfileController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        checkIfUserIsFollow()
         fetchTweets()
+
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,6 +56,13 @@ class ProfileController: UICollectionViewController{
     func fetchTweets() {
         TweetService.shared.fetchTweets(forUser: user) { tweets in
             self.tweets = tweets
+        }
+    }
+    
+    func checkIfUserIsFollow() {
+        UserService.shared.checkIfUserIsFollowed(uid: user.uid) { isFollowed in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
         }
     }
     // MARK: - Selectors
@@ -112,16 +122,19 @@ extension ProfileController: UICollectionViewDelegateFlowLayout {
 
 extension ProfileController: ProfileHeaderDelegate {
     func handleEditProfileFollow(header: ProfileHeader) {
-        
+        if user.isCurrentUser {
+            print("DEBUG: Show edit profile controller...")
+            return
+        }
         if user.isFollowed {
             UserService.shared.unfollowUser(uid: user.uid) { error, ref in
-                print("DEBUG: complete unfollowUser user in backend")
                 self.user.isFollowed = false
+                self.collectionView.reloadData()
             }
         } else {
             UserService.shared.followUser(uid: user.uid) { error, ref in
-                print("DEBUG: complete followUser user in backend")
                 self.user.isFollowed = true
+                self.collectionView.reloadData()
             }
         }
     }
