@@ -159,14 +159,14 @@ class TweetHeader: UICollectionReusableView {
         captionLabel.anchor(top: stack.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, paddingLeft: 16, paddingRight: 16)
         
         addSubview(dateLabel)
-        dateLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 20, paddingLeft: 20)
+        dateLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 10, paddingLeft: 20)
         
         addSubview(optionsButton)
         optionsButton.anchor(right: rightAnchor, paddingRight: 8)
         optionsButton.centerY(inView: stack)
         
         addSubview(statsView)
-        statsView.anchor(top: dateLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 20, height: 40)
+        statsView.anchor(top: dateLabel.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, height: 40)
         
         let actionStack = UIStackView(arrangedSubviews: [commentButton, retweetButton, likeButton, shareButton])
         actionStack.spacing = 72
@@ -174,7 +174,7 @@ class TweetHeader: UICollectionReusableView {
         
         addSubview(actionStack)
         actionStack.centerX(inView: self)
-        actionStack.anchor(bottom: bottomAnchor, paddingBottom: 12)
+        actionStack.anchor(bottom: bottomAnchor, paddingBottom: 5)
     }
     
     required init?(coder: NSCoder) {
