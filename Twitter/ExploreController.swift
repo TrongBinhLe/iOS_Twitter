@@ -32,9 +32,9 @@ class ExploreController: UITableViewController {
     //MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
         fetchUsers()
+        configureSearchController()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,7 +61,7 @@ class ExploreController: UITableViewController {
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.searchBar.placeholder = "Search for a user"
         navigationItem.searchController = searchController
-        definesPresentationContext = true
+        definesPresentationContext = false
     }
     
     func fetchUsers() {
