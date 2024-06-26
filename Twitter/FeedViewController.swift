@@ -118,7 +118,7 @@ extension FeedViewController: TweetCellDelegate {
         navigationController?.pushViewController(controler, animated: true)
     }
     
-    func handleRetweetTapped(_ cell: TweetCell) {
+    func handleReplyTapped(_ cell: TweetCell) {
         guard let tweet = cell.tweet else { return }
         let controller = UploadTweetController(user: tweet.user, config: .reply(tweet))
         let nav = UINavigationController(rootViewController: controller)

@@ -32,12 +32,22 @@ class UploadTweetController: UIViewController {
     
     private let profileImageView: UIImageView = {
        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.setDimensions(width: 60, height: 60)
         iv.layer.cornerRadius = 60 / 2
         
         return iv
+    }()
+    
+    private lazy var replyLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        label.text = "replying to @spiderman"
+        label.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        
+        return label
     }()
     
     private let captionTextView = CaptionTextView()
@@ -94,15 +104,25 @@ class UploadTweetController: UIViewController {
         view.backgroundColor = .white
         configureNavigationbar()
         
-        let stack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
-        stack.axis = .horizontal
+        let imageCaptionStack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
+        imageCaptionStack.axis = .horizontal
+        imageCaptionStack.spacing = 12
+        imageCaptionStack.alignment = .center
+        
+        let stack = UIStackView(arrangedSubviews: [replyLabel, imageCaptionStack])
+        stack.axis = .vertical
         stack.spacing = 12
-        stack.alignment = .center
+        
         
         view.addSubview(stack)
         stack.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 16, paddingLeft: 16, paddingRight: 16)
         
         profileImageView.sd_setImage(with: user.profileImageUrl, completed: nil)
+        actionButton.setTitle(viewmodel.actionButtonTitle, for: .normal)
+        
+        replyLabel.isHidden = !viewmodel.shouldShowReplyLabel
+        guard let replyText = viewmodel.replyText else { return }
+        replyLabel.text = replyText
         
     }
     

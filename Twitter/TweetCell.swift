@@ -9,7 +9,7 @@ import UIKit
 
 protocol TweetCellDelegate : AnyObject {
     func handleProfileImageTapped(_ cell: TweetCell)
-    func handleRetweetTapped(_ cell: TweetCell)
+    func handleReplyTapped(_ cell: TweetCell)
 }
 
 class TweetCell: UICollectionViewCell {
@@ -25,7 +25,7 @@ class TweetCell: UICollectionViewCell {
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
@@ -130,11 +130,11 @@ class TweetCell: UICollectionViewCell {
     // MARK: - Seletors
     
     @objc func handleCommentTapped() {
-        
+        delegate?.handleReplyTapped(self)
     }
     
     @objc func handleRetweetTapped() {
-        delegate?.handleRetweetTapped(self)
+        
     }
     
     @objc func handleLikeTapped() {
