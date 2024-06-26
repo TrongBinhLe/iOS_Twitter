@@ -11,6 +11,12 @@ import UIKit
 class TweetHeader: UICollectionReusableView {
     //MARK: - Properties
     
+    var tweet: Tweet? {
+        didSet {
+            configure()
+        }
+    }
+    
     private lazy var profileImageView: UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
@@ -47,7 +53,6 @@ class TweetHeader: UICollectionReusableView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.numberOfLines = 0
-        label.text = "Some test caption from spiderman for now"
         
         return label
     }()
@@ -71,21 +76,9 @@ class TweetHeader: UICollectionReusableView {
         return button
     }()
     
-    private lazy var retweetsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "2 Retweets"
-        return label
-    }()
-    
-    private lazy var likesLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "0 Likes"
-        
-        return label
-    }()
-    
+    private lazy var retweetsLabel = UILabel()
+    private lazy var likesLabel = UILabel()
+
     private lazy var statsView: UIView = {
         let view = UIView()
         
@@ -187,6 +180,7 @@ class TweetHeader: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 
     //MARK: - Selectors
     
@@ -211,5 +205,21 @@ class TweetHeader: UICollectionReusableView {
     
     @objc func handleShareTapped() {
         
+    }
+    
+    // MARK: Helps
+    
+    func configure() {
+        guard let tweet = tweet else  { return }
+        let viewmodel = TweetViewModel(tweet: tweet)
+        
+        captionLabel.text = tweet.caption
+        fullnameLabel.text = viewmodel.user.fullname
+        usernameLabel.text = viewmodel.usernameText
+        profileImageView.sd_setImage(with: viewmodel.user.profileImageUrl, completed: nil)
+        
+        dateLabel.text = viewmodel.headerTimestamp
+        likesLabel.attributedText = viewmodel.likesAttributedString
+        retweetsLabel.attributedText = viewmodel.retweetAttributedString
     }
 }
