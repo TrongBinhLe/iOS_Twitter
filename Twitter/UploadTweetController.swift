@@ -11,7 +11,8 @@ import UIKit
 class UploadTweetController: UIViewController {
     
     private let user: User
-    
+    private let config: UploadTweetConfiguration
+    private lazy var viewmodel = UploadTweetViewModel(config: config)
     // MARK: - Properties
     private lazy var actionButton: UIButton = {
         let button = UIButton(type: .system)
@@ -42,8 +43,10 @@ class UploadTweetController: UIViewController {
     private let captionTextView = CaptionTextView()
     // MARK: - Lifecyle
     
-    init(user: User) {
+    init(user: User, config: UploadTweetConfiguration) {
         self.user = user
+        self.config = config
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,6 +58,13 @@ class UploadTweetController: UIViewController {
         super.viewDidLoad()
         
         configure()
+        
+        switch config {
+        case .tweet:
+            print("DEBUG: render tweet Ui")
+        case .reply(let tweet):
+            print("DEBUG: render Replying to \(tweet.caption)")
+        }
     }
     
     // MARK: - Selectors
